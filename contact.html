@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - OptiFork</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo"><a href="index.html">OptiFork</a></h1>
+            <nav>
+                <a href="https://github.com/anshumat-org-opensource/optifork" target="_blank">GitHub</a>
+                <a href="index.html#setup">Setup</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <div class="container">
+                <h1>Get in Touch</h1>
+                <p>Have questions about OptiFork? Want to contribute or need support? We'd love to hear from you.</p>
+            </div>
+        </section>
+
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-form">
+                        <h2>Send us a Message</h2>
+                        <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a topic</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="contribution">Contributing to OptiFork</option>
+                                    <option value="partnership">Partnership/Business</option>
+                                    <option value="bug">Bug Report</option>
+                                    <option value="feature">Feature Request</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="6" required placeholder="Tell us about your use case, questions, or how we can help..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info">
+                        <h2>Other Ways to Connect</h2>
+                        
+                        <div class="contact-method">
+                            <h3>💬 GitHub Discussions</h3>
+                            <p>Join our community discussions, ask questions, and share ideas.</p>
+                            <a href="https://github.com/anshumat-org-opensource/optifork/discussions" target="_blank" class="contact-link">Join Discussion →</a>
+                        </div>
+
+                        <div class="contact-method">
+                            <h3>🐛 Issues & Bug Reports</h3>
+                            <p>Found a bug or have a feature request? Open an issue on GitHub.</p>
+                            <a href="https://github.com/anshumat-org-opensource/optifork/issues" target="_blank" class="contact-link">Report Issue →</a>
+                        </div>
+
+                        <div class="contact-method">
+                            <h3>🤝 Contributing</h3>
+                            <p>Want to contribute code, documentation, or ideas? Check out our contribution guide.</p>
+                            <a href="https://github.com/anshumat-org-opensource/optifork/blob/main/CONTRIBUTING.md" target="_blank" class="contact-link">Contribute →</a>
+                        </div>
+
+                        <div class="contact-method">
+                            <h3>📧 Direct Email</h3>
+                            <p>For business inquiries or sensitive matters.</p>
+                            <a href="mailto:hello@optifork.com" class="contact-link">hello@optifork.com</a>
+                        </div>
+
+                        <div class="response-time">
+                            <h3>Response Time</h3>
+                            <p>We typically respond within 24-48 hours during weekdays. For urgent issues, please use GitHub issues for faster community support.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 OptiFork. Open source under <a href="https://github.com/anshumat-org-opensource/optifork/blob/main/LICENSE" target="_blank">Apache License 2.0</a></p>
+        </div>
+    </footer>
+
+    <!-- Form submission handler -->
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // You can replace this with your actual form handling
+            // For now, it shows a success message
+            alert('Thank you for your message! We\'ll get back to you soon.');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
