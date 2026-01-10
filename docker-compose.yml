@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  optifork-website:
+    build: .
+    restart: unless-stopped
+    container_name: optifork-website
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.optifork-website.rule=Host(`your-domain.com`)"
+      - "traefik.http.routers.optifork-website.entrypoints=websecure"
+      - "traefik.http.routers.optifork-website.tls.certresolver=myresolver"
+      - "traefik.http.services.optifork-website.loadbalancer.server.port=8080"
+      # HTTP to HTTPS redirect
+      - "traefik.http.routers.optifork-website-http.rule=Host(`your-domain.com`)"
+      - "traefik.http.routers.optifork-website-http.entrypoints=web"
+      - "traefik.http.routers.optifork-website-http.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+    networks:
+      - traefik
+
+  reverse-proxy:
+    image: traefik:v3.0
+    command:
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      # Let's Encrypt configuration
+      - --certificatesresolvers.myresolver.acme.tlschallenge=true
+      - --certificatesresolvers.myresolver.acme.email=your-email@example.com
+      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
+      # Optional: Enable dashboard (comment out for production)
+      - --api.dashboard=true
+      - --api.insecure=true
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"  # Traefik dashboard (comment out for production)
+    volumes:
+      - ./letsencrypt:/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - traefik
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: false
+
+# For local development without HTTPS, use this simpler version:
+# Uncomment the section below and comment out everything above
+# 
+# services:
+#   optifork-website:
+#     build: .
+#     ports:
+#       - "3000:80"
+#     restart: unless-stopped
+#     container_name: optifork-website

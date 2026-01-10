@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OptiFork - Open Source Feature Flag Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">OptiFork</h1>
+            <nav>
+                <a href="https://github.com/anshumat-org-opensource/optifork" target="_blank">GitHub</a>
+                <a href="#setup">Setup</a>
+                <a href="#docs">Docs</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Feature Flags. Simplified.</h1>
+                <p>Open source feature flag platform for modern applications. Control deployments, experiment safely, and ship with confidence.</p>
+                <div class="cta-buttons">
+                    <a href="https://github.com/anshumat-org-opensource/optifork" class="btn btn-primary" target="_blank">View on GitHub</a>
+                    <a href="#setup" class="btn btn-secondary">Get Started</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Why OptiFork?</h2>
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h3>🚀 Easy Setup</h3>
+                        <p>Get up and running in minutes with simple configuration and deployment options.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🔧 Self-Hosted</h3>
+                        <p>Keep control of your data with self-hosted deployment options.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🌟 Open Source</h3>
+                        <p>Completely open source under Apache License 2.0. Contribute and customize freely.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="setup" class="setup">
+            <div class="container">
+                <h2>Quick Setup</h2>
+                <div class="setup-info">
+                    <p><strong>Prerequisites:</strong> Python 3.8+, Node.js 16+</p>
+                </div>
+                <div class="setup-options">
+                    <div class="setup-option">
+                        <h3>Docker (Recommended)</h3>
+                        <pre><code># Clone repository
+git clone https://github.com/anshumat-org-opensource/optifork.git
+cd optifork
+
+# Development environment
+./deploy.sh dev
+
+# Production environment
+./deploy.sh prod</code></pre>
+                    </div>
+                    <div class="setup-option">
+                        <h3>Manual Setup</h3>
+                        <pre><code># Backend
+cd backend
+pip install -r requirements.txt
+cp ../.env.example .env
+python -c "from db import init_database; import asyncio; asyncio.run(init_database())"
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+# Frontend (in another terminal)
+cd frontend
+npm install
+npm run dev</code></pre>
+                    </div>
+                </div>
+                <div class="access-points">
+                    <h3>Access Points</h3>
+                    <ul>
+                        <li><strong>Frontend:</strong> <a href="http://localhost:3000" target="_blank">http://localhost:3000</a></li>
+                        <li><strong>Backend API:</strong> <a href="http://localhost:8000" target="_blank">http://localhost:8000</a></li>
+                        <li><strong>API Docs:</strong> <a href="http://localhost:8000/docs" target="_blank">http://localhost:8000/docs</a></li>
+                    </ul>
+                </div>
+                <p><a href="https://github.com/anshumat-org-opensource/optifork#readme" target="_blank">View detailed setup instructions →</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 OptiFork. Open source under <a href="https://github.com/anshumat-org-opensource/optifork/blob/main/LICENSE" target="_blank">Apache License 2.0</a></p>
+        </div>
+    </footer>
+</body>
+</html>
